@@ -1,0 +1,106 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #131417;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.snake .header h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 50px;
+}
+.snake .details {
+   width: 400px;
+   margin: auto;
+   padding: 20px 0;
+}
+.snake .details .new_Score {
+    float: left;
+}
+.snake .details .best_Score {
+    float: right;
+}
+.snake .game {
+    width: 625px;
+    height: 400px;
+    background-color: rgb(37 40 48);
+    margin: auto;
+    margin-top: 15px;
+    overflow: auto;
+    border: 1px solid #5a5f73;
+    position: relative;
+}
+.snake .game .box {
+    width: 25px;
+    height: 25px;
+    float: left;
+    position: relative;
+    
+}
+.snake .game .box.even {
+    background-color: #131417;
+}
+.snake .game .box.odd {
+    background-color: rgb(37 40 48);
+}
+
+.snake .game .snake_Box {
+    background-color: #0078d4;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    z-index: 2;
+}
+.snake .game .snake_Head {
+    transition: all .1s linear;
+}
+
+.snake .game .fruit {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+}
+
+.end {
+    transform: scale(0);
+    transition: all .2s linear;
+    width: 100%;
+    height: 100vh;
+    top: 0%;
+    overflow: hidden;
+    position: absolute;
+    z-index: 10;
+}
+
+.fail {
+    width: 400px;
+    background-color: #131417;
+    height: 250px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+.bkColor {
+    width: 100%;
+    height: 100vh;
+    background-color:rgba(19, 20, 23, .7);
+    position: absolute;
+    top: -6%;
+    left: 0%;
+    overflow: hidden;
+}
+.fail img {
+    width: 70%;
+    margin: auto;
+    text-align: center;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
