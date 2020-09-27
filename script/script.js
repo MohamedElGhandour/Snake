@@ -179,7 +179,7 @@
                             break;
                     };
                 }
-    
+
             }
         });
     });
@@ -287,19 +287,26 @@
 
     // create the snake body
 
-    function setCookie(name, value, expires) {
-        document.cookie = name + "=" + value + ((expires == null) ? "" : ";expires=" + expires.toGMTString())
-    }
-    function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
-    }
-    if (getCookie("best_Score_Number") == undefined) {
-        setCookie("best_Score_Number", indexScore);
-        document.querySelector('.best_Score_Number').innerText = getCookie("best_Score_Number");
+    // function setCookie(name, value, expires) {
+    //     document.cookie = name + "=" + value + ((expires == null) ? "" : ";expires=" + expires.toGMTString())
+    // }
+    // function getCookie(name) {
+    //     const value = `; ${document.cookie}`;
+    //     const parts = value.split(`; ${name}=`);
+    //     if (parts.length === 2) return parts.pop().split(';').shift();
+    // }
+    // if (getCookie("best_Score_Number") == undefined) {
+    //     setCookie("best_Score_Number", indexScore);
+    //     document.querySelector('.best_Score_Number').innerText = getCookie("best_Score_Number");
+    // } else {
+    //     document.querySelector('.best_Score_Number').innerText = getCookie("best_Score_Number");
+    // }
+
+    if (localStorage.getItem("best_Score_Number") == undefined) {
+        localStorage.setItem("best_Score_Number", indexScore);
+        document.querySelector('.best_Score_Number').innerText = localStorage.getItem("best_Score_Number");
     } else {
-        document.querySelector('.best_Score_Number').innerText = getCookie("best_Score_Number");
+        document.querySelector('.best_Score_Number').innerText = localStorage.getItem("best_Score_Number");
     }
 
     function moved(number) {
@@ -321,9 +328,13 @@
                 snakeBodyItem = createSnake(snakeBody, parseInt(snake.getAttribute("number")));
             arrSnakeBody.push(snakeBodyItem);
             document.querySelector('.score_Number').innerText = ++indexScore;
-            if (parseInt(getCookie("best_Score_Number")) < parseInt(document.querySelector('.score_Number').innerText)) {
-                setCookie("best_Score_Number", indexScore);
-                document.querySelector('.best_Score_Number').innerText = getCookie("best_Score_Number");
+            // if (parseInt(getCookie("best_Score_Number")) < parseInt(document.querySelector('.score_Number').innerText)) {
+            //     setCookie("best_Score_Number", indexScore);
+            //     document.querySelector('.best_Score_Number').innerText = getCookie("best_Score_Number");
+            // }
+            if (parseInt(localStorage.getItem("best_Score_Number")) < parseInt(document.querySelector('.score_Number').innerText)) {
+                localStorage.setItem("best_Score_Number", indexScore);
+                document.querySelector('.best_Score_Number').innerText = localStorage.getItem("best_Score_Number");
             }
         }
         if (arrSnakeBody.length) {
