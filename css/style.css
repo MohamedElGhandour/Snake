@@ -106,5 +106,34 @@ body, html {
 
 .hidden-Sound {
     display: none;
-    /* test */
+}
+
+.buttons {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: .5;
+    transform: scale(1.5) translate(21px, -21px);
+}
+.buttons button {
+    padding: 5px;
+    background-color: #455f73;
+    border: none;
+    margin: auto;
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+button:focus {
+    outline: none;
+}
+.buttons svg {
+    width: 30px;
+}
+.buttons .rightBtn {
+    margin-left: 15px;
+}
+.buttons .leftBtn {
+    margin-right: 15px;
 }

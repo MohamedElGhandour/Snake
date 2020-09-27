@@ -35,7 +35,6 @@
     //move Snake
     window.addEventListener('keydown', function (e) {
         snakeMove(e, snake, arr, randomArrItem);
-        document.querySelector('.background-sound').play();
     });
 
     // Class Interval
@@ -100,63 +99,20 @@
 
     function snakeMove(e) {
         if (gameIsWorked) {
+            document.querySelector('.background-sound').play();
             if (arrSnakeBody.length) {
                 switch (e.which) {
                     case 39: // Arrow Right
-                        if (!(arrowValRFN.isRunning())) {
-                            if (arrowValLFN.isRunning()) {
-                                console.log('Dimensions cannot be reversed');
-                            } else {
-                                arrFN.forEach(element => {
-                                    if (element.isRunning())
-                                        element.stop();
-                                });
-                                arrowValR();
-                                arrowValRFN.start();
-                            }
-                        }
+                        arrowRightProcessCaseOne();
                         break;
                     case 37: // Arrow Left
-                        if (!(arrowValLFN.isRunning())) {
-                            if (arrowValRFN.isRunning()) {
-                                console.log('Dimensions cannot be reversed');
-                            } else {
-                                arrFN.forEach(element => {
-                                    if (element.isRunning())
-                                        element.stop();
-                                });
-                                arrowValL();
-                                arrowValLFN.start();
-                            }
-                        }
+                        arrowLeftProcessCaseOne();
                         break;
                     case 38: // Arrow Up
-                        if (!(arrowValUFN.isRunning())) {
-                            if (arrowValDFN.isRunning()) {
-                                console.log('Dimensions cannot be reversed');
-                            } else {
-                                arrFN.forEach(element => {
-                                    if (element.isRunning())
-                                        element.stop();
-                                });
-                                arrowValU();
-                                arrowValUFN.start();
-                            }
-                        }
+                        arrowUpProcessCaseOne();
                         break;
                     case 40: // Arrow Down
-                        if (!(arrowValDFN.isRunning())) {
-                            if (arrowValUFN.isRunning()) {
-                                console.log('Dimensions cannot be reversed');
-                            } else {
-                                arrFN.forEach(element => {
-                                    if (element.isRunning())
-                                        element.stop();
-                                });
-                                arrowValD();
-                                arrowValDFN.start();
-                            }
-                        }
+                        arrowDownProcessCaseOne();
                         break;
                     default:
                         break;
@@ -164,50 +120,166 @@
             } else {
                 switch (e.which) {
                     case 39: // Arrow Right
-                        if (!(arrowValRFN.isRunning())) {
-                            arrFN.forEach(element => {
-                                if (element.isRunning())
-                                    element.stop();
-                            });
-                            arrowValR();
-                            arrowValRFN.start();
-                        }
+                        arrowRightProcessCaseTwo();
                         break;
                     case 37: // Arrow Left
-                        if (!(arrowValLFN.isRunning())) {
-                            arrFN.forEach(element => {
-                                if (element.isRunning())
-                                    element.stop();
-                            });
-                            arrowValL();
-                            arrowValLFN.start();
-                        }
+                        arrowLeftProcessCaseTwo();
                         break;
                     case 38: // Arrow Up
-                        if (!(arrowValUFN.isRunning())) {
-                            arrFN.forEach(element => {
-                                if (element.isRunning())
-                                    element.stop();
-                            });
-                            arrowValU();
-                            arrowValUFN.start();
-                        }
+                        arrowUpProcessCaseTwo();
                         break;
                     case 40: // Arrow Down
-                        if (!(arrowValDFN.isRunning())) {
-                            arrFN.forEach(element => {
-                                if (element.isRunning())
-                                    element.stop();
-                            });
-                            arrowValD();
-                            arrowValDFN.start();
-                        }
+                        arrowDownProcessCaseTwo();
                         break;
                     default:
                         break;
                 };
             }
+        }
+    }
 
+    document.querySelectorAll('.btn').forEach(element => {
+        element.addEventListener('click', function () {
+            if (gameIsWorked) {
+                document.querySelector('.background-sound').play();
+                if (arrSnakeBody.length) {
+                    switch (parseInt(element.getAttribute('data-num'))) {
+                        case 3: // Arrow Right
+                            arrowRightProcessCaseOne();
+                            break;
+                        case 2: // Arrow Left
+                            arrowLeftProcessCaseOne();
+                            break;
+                        case 1: // Arrow Up
+                            arrowUpProcessCaseOne();
+                            break;
+                        case 4: // Arrow Down
+                            arrowDownProcessCaseOne();
+                            break;
+                        default:
+                            break;
+                    };
+                } else {
+                    switch (parseInt(element.getAttribute('data-num'))) {
+                        case 3: // Arrow Right
+                            arrowRightProcessCaseTwo();
+                            break;
+                        case 2: // Arrow Left
+                            arrowLeftProcessCaseTwo();
+                            break;
+                        case 1: // Arrow Up
+                            arrowUpProcessCaseTwo();
+                            break;
+                        case 4: // Arrow Down
+                            arrowDownProcessCaseTwo();
+                            break;
+                        default:
+                            break;
+                    };
+                }
+    
+            }
+        });
+    });
+
+    function arrowRightProcessCaseOne() {
+        if (!(arrowValRFN.isRunning())) {
+            if (arrowValLFN.isRunning()) {
+                console.log('Dimensions cannot be reversed');
+            } else {
+                arrFN.forEach(element => {
+                    if (element.isRunning())
+                        element.stop();
+                });
+                arrowValR();
+                arrowValRFN.start();
+            }
+        }
+    }
+    function arrowLeftProcessCaseOne() {
+        if (!(arrowValLFN.isRunning())) {
+            if (arrowValRFN.isRunning()) {
+                console.log('Dimensions cannot be reversed');
+            } else {
+                arrFN.forEach(element => {
+                    if (element.isRunning())
+                        element.stop();
+                });
+                arrowValL();
+                arrowValLFN.start();
+            }
+        }
+    }
+    function arrowUpProcessCaseOne() {
+        if (!(arrowValUFN.isRunning())) {
+            if (arrowValDFN.isRunning()) {
+                console.log('Dimensions cannot be reversed');
+            } else {
+                arrFN.forEach(element => {
+                    if (element.isRunning())
+                        element.stop();
+                });
+                arrowValU();
+                arrowValUFN.start();
+            }
+        }
+    }
+    function arrowDownProcessCaseOne() {
+        if (!(arrowValDFN.isRunning())) {
+            if (arrowValUFN.isRunning()) {
+                console.log('Dimensions cannot be reversed');
+            } else {
+                arrFN.forEach(element => {
+                    if (element.isRunning())
+                        element.stop();
+                });
+                arrowValD();
+                arrowValDFN.start();
+            }
+        }
+    }
+
+    function arrowRightProcessCaseTwo() {
+        if (!(arrowValRFN.isRunning())) {
+            arrFN.forEach(element => {
+                if (element.isRunning())
+                    element.stop();
+            });
+            arrowValR();
+            arrowValRFN.start();
+        }
+    }
+
+    function arrowLeftProcessCaseTwo() {
+        if (!(arrowValLFN.isRunning())) {
+            arrFN.forEach(element => {
+                if (element.isRunning())
+                    element.stop();
+            });
+            arrowValL();
+            arrowValLFN.start();
+        }
+    }
+
+    function arrowUpProcessCaseTwo() {
+        if (!(arrowValUFN.isRunning())) {
+            arrFN.forEach(element => {
+                if (element.isRunning())
+                    element.stop();
+            });
+            arrowValU();
+            arrowValUFN.start();
+        }
+    }
+
+    function arrowDownProcessCaseTwo() {
+        if (!(arrowValDFN.isRunning())) {
+            arrFN.forEach(element => {
+                if (element.isRunning())
+                    element.stop();
+            });
+            arrowValD();
+            arrowValDFN.start();
         }
     }
 
@@ -271,6 +343,7 @@
 
     function fail() {
         document.querySelector('.end').style.transform = 'scale(1)';
+        document.querySelector('.background-sound').pause();
         document.querySelector('.die-sound').play();
         document.querySelector('.end').addEventListener("click", function () {
             location.reload();
