@@ -178,7 +178,7 @@ button:focus {
 .profile {
     width: 65px;
     height: 65px;
-    position: absolute;
+    position: fixed;
     bottom: 20px;
     right: 20px;
     background-image: url(../img/profile.png);
