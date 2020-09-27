@@ -100,6 +100,7 @@
     function snakeMove(e) {
         if (gameIsWorked) {
             document.querySelector('.background-sound').play();
+            document.querySelector('.background-sound').volume = 0.1;
             if (arrSnakeBody.length) {
                 switch (e.which) {
                     case 39: // Arrow Right
@@ -142,6 +143,7 @@
         element.addEventListener('click', function () {
             if (gameIsWorked) {
                 document.querySelector('.background-sound').play();
+                document.querySelector('.background-sound').volume = 0.1;
                 if (arrSnakeBody.length) {
                     switch (parseInt(element.getAttribute('data-num'))) {
                         case 3: // Arrow Right
