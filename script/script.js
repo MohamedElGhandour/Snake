@@ -305,8 +305,10 @@
     if (localStorage.getItem("best_Score_Number") == undefined) {
         localStorage.setItem("best_Score_Number", indexScore);
         document.querySelector('.best_Score_Number').innerText = localStorage.getItem("best_Score_Number");
+        document.querySelector('.score_Number').innerText = indexScore;
     } else {
         document.querySelector('.best_Score_Number').innerText = localStorage.getItem("best_Score_Number");
+        document.querySelector('.score_Number').innerText = indexScore;
     }
 
     function moved(number) {
