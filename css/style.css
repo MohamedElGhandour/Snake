@@ -17,6 +17,9 @@ body, html {
     .warning-rotate {
         transform: scale(1) !important;
     }
+    body, html {
+        overflow: hidden;
+    }
   }
 .snake .header h1 {
     font-family: 'Pacifico', cursive;
