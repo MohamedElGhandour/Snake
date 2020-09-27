@@ -7,7 +7,6 @@
     var arrSnakeBody = [],
         newNum,
         indexScore = 0;
-    document.querySelector('.background-sound').play();
     //create Pexel
     for (var index = 0; index < pexelNumber; index++) {
         var pexel = document.createElement("div");
@@ -36,6 +35,7 @@
     //move Snake
     window.addEventListener('keydown', function (e) {
         snakeMove(e, snake, arr, randomArrItem);
+        document.querySelector('.background-sound').play();
     });
 
     // Class Interval
