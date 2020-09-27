@@ -7,6 +7,7 @@
     var arrSnakeBody = [],
         newNum,
         indexScore = 0;
+    document.querySelector('.background-sound').play();
     //create Pexel
     for (var index = 0; index < pexelNumber; index++) {
         var pexel = document.createElement("div");
@@ -240,6 +241,7 @@
         snake.style.left = ` ${arr[parseInt(snake.getAttribute("number"))].offsetLeft}px`;
         snake.style.top = ` ${arr[parseInt(snake.getAttribute("number"))].offsetTop}px`;
         if (arr[parseInt(snake.getAttribute("number"))] == arr[parseInt(fruit.getAttribute("number"))]) {
+            document.querySelector('.eat-sound').play();
             createFruit();
             var snakeBody = document.createElement("div"),
                 snakeBodyItem = createSnake(snakeBody, parseInt(snake.getAttribute("number")));
@@ -269,6 +271,7 @@
 
     function fail() {
         document.querySelector('.end').style.transform = 'scale(1)';
+        document.querySelector('.die-sound').play();
         document.querySelector('.end').addEventListener("click", function () {
             location.reload();
         });
@@ -329,120 +332,4 @@
             moved(lastNum);
         }
     };
-
-
-
-
-
-
-    // //create snake
-    // var snake = document.createElement("div"),
-    // randomArrItem = Math.round(Math.random() * (arr.length - 1));
-    // snake.classList.add('snake_Box');
-    // game.appendChild(snake);
-    // snake.style.left = ` ${arr[randomArrItem].offsetLeft}px`;
-    // snake.style.top = ` ${arr[randomArrItem].offsetTop}px`;
-
-
-    // function snakeMove(e, snake, arr, randomArrItem) {
-    //     switch (e.keyCode) {
-    //         case 39: // Arrow Right
-    //         window.randomArrItem = randomArrItem + 1;
-    //         if ((randomArrItem+1) > 399) {
-    //             console.log('LOSE');
-    //         } else {
-    //             snake.style.left = ` ${arr[randomArrItem + 1].offsetLeft}px`;
-    //             snake.style.top = ` ${arr[randomArrItem + 1].offsetTop}px`;
-    //             console.log(randomArrItem);
-    //         }
-    //         break;
-    //         case 37: // Arrow Left
-    //                 window.randomArrItem = randomArrItem - 1;
-    //                 if ((randomArrItem-1) < 0) {
-    //                     console.log('LOSE');
-    //                 } else {
-    //                     snake.style.left = ` ${arr[randomArrItem - 1].offsetLeft}px`;
-    //                     snake.style.top = ` ${arr[randomArrItem - 1].offsetTop}px`;
-    //                     console.log(randomArrItem);
-    //                 }
-    //         break;
-    //         default:
-    //             break;
-    //     };
-
-    // }
-
-
-
-    // function snakeMove(e, snake, arr, randomArrItem) {
-    //     if (gameIsWorked) {
-    //         // var arrArrowR = [],
-    //         //     arrArrowL = [];
-    //         // for (let index = 25; index <= arr.length; index = index + 25) {
-    //         //     arrArrowR.push(index);
-    //         // }
-    //         // for (let index = 0; index <= arr.length - 25; index = index + 25) {
-    //         //     arrArrowL.push(index);
-    //         // }
-    //         switch (e.keyCode) {
-    //             case 39: // Arrow Right
-    //                 snake.setAttribute("number", parseInt(snake.getAttribute("number")) + 1);
-    //                 // arrArrowR.forEach(element => {
-    //                 //     if (element == snake.getAttribute("number")) {
-    //                 //         console.log('LOSE');
-    //                 //         fail();
-    //                 //         gameIsWorked = false;
-    //                 //     }
-    //                 // });
-    //                 console.log(parseInt((snake.getAttribute("number")) % 25), parseInt((snake.getAttribute("number"))));
-    //                 if (parseInt(snake.getAttribute("number")) % 25 == 0) {
-    //                     console.log('LOSE');
-    //                     fail();
-    //                     gameIsWorked = false;
-    //                 } else {
-    //                     moved();
-    //                 }
-    //                 break;
-    //             case 37: // Arrow Left
-    //                 snake.setAttribute("number", parseInt((snake.getAttribute("number")) - 1));
-    //                 // arrArrowL.forEach(element => {
-    //                 //     if (element - 1 == snake.getAttribute("number")) {
-    //                 //         console.log('LOSE');
-    //                 //         fail();
-    //                 //         gameIsWorked = false;
-    //                 //     }
-    //                 // });
-    //                 if ((parseInt(snake.getAttribute("number"))+1) % 25 == 0) {
-    //                     console.log('LOSE');
-    //                     fail();
-    //                     gameIsWorked = false;
-    //                 } else {
-    //                     moved();
-    //                 }
-    //                 break;
-    //             case 38: // Arrow Up
-    //                 snake.setAttribute("number", parseInt((snake.getAttribute("number")) - 25));
-    //                 if (snake.getAttribute("number") < 0) {
-    //                     console.log('LOSE');
-    //                     fail();
-    //                 } else {
-    //                     moved();
-    //                 }
-    //                 break;
-    //             case 40: // Arrow Down
-    //                 snake.setAttribute("number", parseInt(snake.getAttribute("number")) + 25);
-    //                 if (snake.getAttribute("number") > 399) {
-    //                     console.log('LOSE');
-    //                     fail();
-    //                 } else {
-    //                     moved();
-    //                 }
-    //                 break;
-    //             default:
-    //                 break;
-    //         };
-    //         // Dir of Snake
-
-    //     }
-    // }
 }())

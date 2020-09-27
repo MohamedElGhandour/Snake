@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/snake.png" type="image/x-icon">
     <title>Snake</title>
 </head>
 
@@ -26,6 +27,21 @@
         <div class="fail">
             <img class="img" src="img/game over.png" alt="">
         </div>
+    </div>
+    <div class="hidden-Sound">
+        <audio class="eat-sound" controls>
+            <source src="sound/eat.ogg" type="audio/ogg">
+            <source src="sound/eat.wav" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <audio class="die-sound" controls>
+            <source src="sound/gameover.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <audio class="background-sound" controls loop>
+            <source src="sound/backgroundmusic.mp3" type="audio/ogg">
+            Your browser does not support the audio element.
+        </audio>
     </div>
     <script src="script/script.js"></script>
 </body>
