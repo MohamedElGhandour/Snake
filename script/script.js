@@ -90,7 +90,9 @@
             }
         }
         fruit.setAttribute("number", randomfruit);
-        fruit.setAttribute("src", "img/tomato.png");
+        var randomFruitImg = Math.round(Math.random() * 8) + 1,
+        imgSrc = `img/${randomFruitImg}.png`;
+        fruit.setAttribute("src", imgSrc);
         game.appendChild(fruit);
         fruit.style.left = ` ${arr[fruit.getAttribute("number")].offsetLeft}px`;
         fruit.style.top = ` ${arr[fruit.getAttribute("number")].offsetTop}px`;
