@@ -1,4 +1,4 @@
-(function () {
+(function snakeGame() {
 
     const game = document.querySelector('.game'),
         pexelNumber = (625 / 25) * (400 / 25);
@@ -359,11 +359,26 @@
         document.querySelector('.background-sound').pause();
         document.querySelector('.die-sound').play();
         document.querySelector('.end').addEventListener("click", function () {
-            location.reload();
+            //location.reload();
+            document.querySelector('.end').style.transform = 'scale(0)';
+            document.querySelector('.game').remove();
+            var gameEle = document.createElement('div');
+            var snakeEle = document.querySelector('.snake');
+            gameEle.classList.add('game');
+            snakeEle.appendChild(gameEle);
+            snakeGame();
         });
         window.addEventListener("keydown", function (e) {
-            if (e.which == 13)
-                location.reload();
+            if (e.which == 13) {
+                //location.reload();
+                document.querySelector('.end').style.transform = 'scale(0)';
+                document.querySelector('.game').remove();
+                var gameEle = document.createElement('div');
+                var snakeEle = document.querySelector('.snake');
+                gameEle.classList.add('game');
+                snakeEle.appendChild(gameEle);
+                snakeGame();
+            }
         });
         arrFN.forEach(element => {
             if (element.isRunning())
