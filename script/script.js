@@ -1,6 +1,6 @@
 (function snakeGame() {
 
-    const game = document.querySelector('.game'),
+    const game = document.querySelector('.container'),
         pexelNumber = (625 / 25) * (400 / 25);
     var arr = [],
         gameIsWorked = true;
@@ -34,7 +34,7 @@
 
     //move Snake
     window.addEventListener('keydown', function (e) {
-        snakeMove(e, snake, arr, randomArrItem);
+        snakeMove(e);
     });
 
     // Class Interval
@@ -315,6 +315,7 @@
                 if (parseInt(element.getAttribute('number')) == number) {
                     console.log('LOSE');
                     gameIsWorked = false;
+                    console.log('from function moved(number)');
                     fail();
                 }
             });
@@ -353,33 +354,35 @@
         tail.setAttribute("number", number);
         return lastNum;
     }
+    const onEndBtnClicK = (e) => {
+        document.querySelector('.end').style.transform = 'scale(0)';
+        document.querySelector('.container').remove();
+        var gameEle = document.createElement('div');
+        var snakeEle = document.querySelector('.game');
+        gameEle.classList.add('container');
+        snakeEle.appendChild(gameEle);
+        snakeGame();
+        document.querySelector('.end').removeEventListener("click", onEndBtnClicK);
+    }
+    const onEndKeyClick = (e) => {
+        if (e.which == 13) {
+            document.querySelector('.end').style.transform = 'scale(0)';
+            document.querySelector('.container').remove();
+            var gameEle = document.createElement('div');
+            var snakeEle = document.querySelector('.game');
+            gameEle.classList.add('container');
+            snakeEle.appendChild(gameEle);
+            snakeGame();
+            window.removeEventListener("keydown", onEndKeyClick);
+        }
+    }
 
     function fail() {
         document.querySelector('.end').style.transform = 'scale(1)';
         document.querySelector('.background-sound').pause();
         document.querySelector('.die-sound').play();
-        document.querySelector('.end').addEventListener("click", function () {
-            //location.reload();
-            document.querySelector('.end').style.transform = 'scale(0)';
-            document.querySelector('.game').remove();
-            var gameEle = document.createElement('div');
-            var snakeEle = document.querySelector('.snake');
-            gameEle.classList.add('game');
-            snakeEle.appendChild(gameEle);
-            snakeGame();
-        });
-        window.addEventListener("keydown", function (e) {
-            if (e.which == 13) {
-                //location.reload();
-                document.querySelector('.end').style.transform = 'scale(0)';
-                document.querySelector('.game').remove();
-                var gameEle = document.createElement('div');
-                var snakeEle = document.querySelector('.snake');
-                gameEle.classList.add('game');
-                snakeEle.appendChild(gameEle);
-                snakeGame();
-            }
-        });
+        document.querySelector('.end').addEventListener("click", onEndBtnClicK);
+        window.addEventListener("keydown", onEndKeyClick);
         arrFN.forEach(element => {
             if (element.isRunning())
                 element.stop();
@@ -391,6 +394,7 @@
             console.log('LOSE');
             gameIsWorked = false;
             fail();
+            console.log('from function arrowValR()');
         } else {
             var lastNum = parseInt(snake.getAttribute("number"));
             snake.setAttribute("number", parseInt(snake.getAttribute("number")) + 1);
@@ -403,6 +407,7 @@
             console.log('LOSE');
             gameIsWorked = false;
             fail();
+            console.log('from function arrowValL()');
         } else {
             var lastNum = parseInt(snake.getAttribute("number"));
             snake.setAttribute("number", parseInt(snake.getAttribute("number")) - 1);
@@ -415,6 +420,7 @@
             console.log('LOSE');
             gameIsWorked = false;
             fail();
+            console.log('from function arrowValU()');
         } else {
             var lastNum = parseInt(snake.getAttribute("number"));
             snake.setAttribute("number", parseInt(snake.getAttribute("number")) - 25);
@@ -427,6 +433,7 @@
             console.log('LOSE');
             gameIsWorked = false;
             fail();
+            console.log('from function arrowValD()');
         } else {
             var lastNum = parseInt(snake.getAttribute("number"));
             snake.setAttribute("number", parseInt(snake.getAttribute("number")) + 25);
